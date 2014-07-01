@@ -10,7 +10,7 @@
   ],
   "dependencies": {
     "component/emitter": "*",
-    "Swatinem/websocket-buffering": "*"
+    "ubergrape/websocket": "*"
   },
   "license": "LGPLv3"
 }

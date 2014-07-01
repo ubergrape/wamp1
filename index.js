@@ -1,7 +1,7 @@
 /* vim: set shiftwidth=2 tabstop=2 noexpandtab textwidth=80 wrap : */
 "use strict";
 
-var ws = require('websocket-buffering');
+var ws = require('websocket');
 var Emitter;
 try {
 	// node
