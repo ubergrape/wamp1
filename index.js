@@ -2,14 +2,7 @@
 "use strict";
 
 var ws = require('websocket');
-var Emitter;
-try {
-	// node
-	Emitter = require('component-emitter');
-} catch (e) {
-	// component
-	Emitter = require('emitter');
-}
+var Emitter = require('emitter');
 
 var slice = [].slice;
 
