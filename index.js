@@ -50,7 +50,7 @@ Wamp.prototype._send = function Wamp__send(json) {
 };
 
 Wamp.prototype._handle = function Wamp__handle(message) {
-	message = JSON.parse(message);
+	message = JSON.parse(message.data);
 	var type = this.types[message.shift()];
 	switch (type) {
 		case 'welcome':
