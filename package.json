@@ -1,12 +1,9 @@
 {
   "name": "wamp1",
   "description": "Very simple WAMP v1 implementation",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "keywords": ["websocket", "wamp"],
   "main": "./index",
-  "maintainers": [
-    "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
-  ],
   "dependencies": {
     "component-emitter": "*",
     "websocket-buffering": "*"
@@ -22,6 +19,6 @@
   "scripts": {
     "test": "make test-coveralls"
   },
-  "repository": "git://github.com/Swatinem/wamp1.git",
+  "repository": "git://github.com/ubergrape/wamp1.git",
   "license": "LGPLv3"
 }
