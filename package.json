@@ -6,7 +6,7 @@
   "main": "./index",
   "dependencies": {
     "component-emitter": "*",
-    "websocket-buffering": "*"
+    "websocket": "ubergrape/websocket"
   },
   "devDependencies": {
     "ws": "*",
