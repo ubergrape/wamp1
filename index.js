@@ -12,8 +12,9 @@ function Wamp(host, options, fn) {
 	Emitter.call(this);
 	if (typeof host === 'string') {
 		this.socket = new ws(host);
-		this.socket.on('error', this.emit.bind(this, 'error'));
-		this.socket.on('open', this.emit.bind(this, 'open'));
+		['error', 'open', 'close'].forEach(function(event) {
+			this.socket.on(event, this.emit.bind(this, event));
+		}, this);
 	}
 	else this.socket = host;
 
@@ -187,5 +188,5 @@ Wamp.prototype.call = function Wamp_call(uri) {
 Wamp.prototype.destroy = function() {
 	this.off();
 	this.socket.off();
-	this.socket.close();
+	this.socket.close(3001);
 };
