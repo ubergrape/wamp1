@@ -10,16 +10,17 @@ module.exports = Wamp;
 
 function Wamp(host, options, fn) {
 	Emitter.call(this);
-	if (typeof host === 'string')
+	if (typeof host === 'string') {
 		this.socket = new ws(host);
-	else
-		this.socket = host;
+		this.socket.on('error', this.emit.bind(this, 'error'));
+		this.socket.on('open', this.emit.bind(this, 'open'));
+	}
+	else this.socket = host;
+
 	if (typeof options === 'function' || !options) {
 		fn = options;
 		options = {};
 	}
-	this.socket.on('error', this.emit.bind(this, 'error'));
-	this.socket.on('open', this.emit.bind(this, 'open'));
 	this.socket.on('message', this._handle.bind(this));
 	this.sessionId = undefined;
 	this._welcomecb = fn || function () {};
