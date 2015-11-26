@@ -183,3 +183,9 @@ Wamp.prototype.call = function Wamp_call(uri) {
 	this._calls[callid] = fn;
 	this._send([type('call'), callid, uri].concat(args));
 };
+
+Wamp.prototype.destroy = function() {
+	this.off();
+	this.socket.off();
+	this.socket.close();
+};
