@@ -18,6 +18,8 @@ function Wamp(host, options, fn) {
 		fn = options;
 		options = {};
 	}
+	this.socket.on('error', this.emit.bind(this, 'error'));
+	this.socket.on('open', this.emit.bind(this, 'open'));
 	this.socket.on('message', this._handle.bind(this));
 	this.sessionId = undefined;
 	this._welcomecb = fn || function () {};
@@ -180,4 +182,3 @@ Wamp.prototype.call = function Wamp_call(uri) {
 	this._calls[callid] = fn;
 	this._send([type('call'), callid, uri].concat(args));
 };
-
