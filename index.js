@@ -1,27 +1,16 @@
-/* vim: set shiftwidth=2 tabstop=2 noexpandtab textwidth=80 wrap : */
-"use strict";
+'use strict';
 
-var ws = require('websocket');
-var Emitter = require('emitter');
+var Emitter = require('component-emitter');
 
 var slice = [].slice;
 
-module.exports = Wamp;
-
-function Wamp(host, options, fn) {
+function Wamp(socket, options, fn) {
 	Emitter.call(this);
-	if (typeof host === 'string') {
-		this.socket = new ws(host);
-		['error', 'open', 'close'].forEach(function(event) {
-			this.socket.on(event, this.emit.bind(this, event));
-		}, this);
-	}
-	else this.socket = host;
-
 	if (typeof options === 'function' || !options) {
 		fn = options;
 		options = {};
 	}
+	this.socket = socket;
 	this.socket.on('message', this._handle.bind(this));
 	this.sessionId = undefined;
 	this._welcomecb = fn || function () {};
@@ -32,6 +21,7 @@ function Wamp(host, options, fn) {
 }
 
 Wamp.prototype = Object.create(Emitter.prototype);
+module.exports = Wamp;
 
 Wamp.types = Wamp.prototype.types = [
 	'welcome',
@@ -183,10 +173,4 @@ Wamp.prototype.call = function Wamp_call(uri) {
 	var callid = Math.random().toString(36).substring(2);
 	this._calls[callid] = fn;
 	this._send([type('call'), callid, uri].concat(args));
-};
-
-Wamp.prototype.destroy = function() {
-	this.off();
-	this.socket.off();
-	this.socket.close(3001);
 };
