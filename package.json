@@ -20,5 +20,5 @@
     "test": "make test-coveralls"
   },
   "repository": "git://github.com/ubergrape/wamp1.git",
-  "license": "LGPLv3"
+  "license": "MIT"
 }

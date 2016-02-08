@@ -12,5 +12,5 @@
     "component/emitter": "*",
     "ubergrape/websocket": "*"
   },
-  "license": "LGPLv3"
+  "license": "MIT"
 }
