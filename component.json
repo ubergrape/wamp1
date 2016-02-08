@@ -1,6 +1,6 @@
 {
   "name": "wamp1",
-  "repo": "Swatinem/wamp1",
+  "repo": "ubergrape/wamp1",
   "version": "1.1.0",
   "description": "Very simple WAMP v1 implementation",
   "keywords": ["websocket", "wamp"],

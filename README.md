@@ -9,7 +9,7 @@ Very simple WAMP v1 implementation
 ## Installation
 
     $ npm install wamp1
-    $ component install Swatinem/wamp1
+    $ component install ubergrape/wamp1
 
 ## Rational
 
