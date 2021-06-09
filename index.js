@@ -1,8 +1,8 @@
 /* vim: set shiftwidth=2 tabstop=2 noexpandtab textwidth=80 wrap : */
 "use strict";
 
-var ws = require('websocket');
-var Emitter = require('emitter');
+var ws = require('websocket-buffering');
+var Emitter = require('component-emitter');
 
 var slice = [].slice;
 
