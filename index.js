@@ -84,6 +84,18 @@ Wamp.prototype._handle = function Wamp__handle(message) {
 				fn(result);
 			}
 		break;
+		// the WAMPv1 spec only allows client-server RPC calls but
+		// we will also allow server-client RPC calls here
+		case 'call':
+			var callid = message[0];
+			var endpoint = message[1];
+			var args = slice.call(message, 2);
+			var that = this;
+			var callback = function(response) {
+				that._respond(callid, response);
+			};
+			this.emit('call', endpoint, args, callback);
+		break;
 	}
 };
 
@@ -181,3 +193,6 @@ Wamp.prototype.call = function Wamp_call(uri) {
 	this._send([type('call'), callid, uri].concat(args));
 };
 
+Wamp.prototype._respond = function Wamp_respond(callid, response) {
+	this._send([type('callresult'), callid, response]);
+};
