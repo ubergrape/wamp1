@@ -1,7 +1,7 @@
 /* vim: set shiftwidth=2 tabstop=2 noexpandtab textwidth=80 wrap : */
 "use strict";
 
-var ws = require('websocket-buffering');
+var ws = require('@ubergrape/websocket-buffering');
 var Emitter = require('component-emitter');
 
 var slice = [].slice;
