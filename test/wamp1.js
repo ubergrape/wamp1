@@ -360,6 +360,21 @@ describe('wamp1', function () {
 				done();
 			});
 		});
+		it('should be able to answer simple RPC calls from the server with no arguments', function(done) {
+			var callid = "456123";
+			server.send(JSON.stringify([2, callid, "ping"]));
+			server.once('message', function (msg) {
+				msg = JSON.parse(msg);
+				msg[0].should.eql(3); // callresult
+				msg[1].should.eql(callid);
+				msg[2].should.eql('pong');
+				msg.should.have.length(3);
+				done();
+			});
+			client.on('call', function(endpoint, args, callback){
+				callback('pong');
+			});
+		});
 	});
 });
 
