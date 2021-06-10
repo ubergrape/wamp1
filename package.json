@@ -1,5 +1,5 @@
 {
-  "name": "wamp1",
+  "name": "@ubergrape/wamp1",
   "description": "Very simple WAMP v1 implementation",
   "version": "1.1.0",
   "keywords": [
@@ -22,6 +22,17 @@
   "scripts": {
     "test": "make test-coveralls"
   },
-  "repository": "git://github.com/ubergrape/wamp1.git",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ubergrape/wamp1.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ubergrape/wamp1/issues"
+  },
+  "homepage": "https://github.com/ubergrape/wamp1#readme",
+  "directories": {
+    "test": "test"
+  },
+  "author": ""
 }
